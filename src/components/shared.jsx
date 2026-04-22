@@ -151,7 +151,7 @@ export const TCLogo = ({ size = 32 }) => (
     flexShrink: 0, background: "#B8E5A0",
   }}>
     <img
-      src="/assets/logo_mark_official.jpg"
+      src={`${import.meta.env.BASE_URL}assets/logo_mark_official.jpg`}
       alt="TruCycle"
       style={{
         width: "160%", height: "160%",
