@@ -1,4 +1,7 @@
 /* TruCycle 2.0 design tokens — derived from live trucycle.co.uk */
+@keyframes tcPulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+@keyframes tcTickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
 :root {
   /* Brand */
   --tc-mint: #B8E5A0;

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Icons, TCWordmark, getItemArt } from './shared';
-import { IOSDevice } from '../frames/IOSFrame';
 import { currentUser, spots, categories } from '../data/data';
 import { MHeader, MBottomNav, MCTABtn, MMini, MField } from './MobileHelpers';
 import { MSpotDetail, MClaimDirections, MClaimConfirm, MRescueSuccess, MMap, MNearby } from './MobileRescue';
@@ -8,9 +7,9 @@ import { MSpotDetail, MClaimDirections, MClaimConfirm, MRescueSuccess, MMap, MNe
 const MobileFlow = ({ screen, setScreen, spotId, setSpotId }) => {
   const go = (k, id) => { setScreen(k); if (id !== undefined) setSpotId(id); };
 
-  let Content, statusBarDark = false;
+  let Content;
   switch (screen) {
-    case "spot-capture": Content = <MSpotCapture go={go} />; statusBarDark = true; break;
+    case "spot-capture": Content = <MSpotCapture go={go} />; break;
     case "spot-location": Content = <MSpotLocation go={go} />; break;
     case "spot-review": Content = <MSpotReview go={go} />; break;
     case "spot-success": Content = <MSpotSuccess go={go} />; break;
@@ -24,11 +23,14 @@ const MobileFlow = ({ screen, setScreen, spotId, setSpotId }) => {
   }
 
   return (
-    <IOSDevice dark={statusBarDark}>
-      <div style={{ width: "100%", height: "100%", background: "white", overflow: "hidden", display: "flex", flexDirection: "column" }}>
-        {Content}
-      </div>
-    </IOSDevice>
+    <div style={{
+      minHeight: "100vh", width: "100%", background: "white",
+      display: "flex", flexDirection: "column",
+      fontFamily: '-apple-system, system-ui, sans-serif',
+      WebkitFontSmoothing: 'antialiased',
+    }}>
+      {Content}
+    </div>
   );
 };
 
