@@ -1,0 +1,85 @@
+/* TruCycle 2.0 design tokens — derived from live trucycle.co.uk */
+:root {
+  /* Brand */
+  --tc-mint: #B8E5A0;
+  --tc-mint-bg: #E8F5DC;
+  --tc-mint-wash: #F4FAEE;
+  --tc-mint-deep: #98D37A;
+  --tc-mint-ink: #3B6B1E;
+
+  /* Neutrals */
+  --tc-ink: #0A0D0A;
+  --tc-ink-2: #1A1F1A;
+  --tc-sidebar: #121816;
+  --tc-sidebar-hover: #1E2521;
+  --tc-sidebar-active: #2A332D;
+  --tc-text: #0F1510;
+  --tc-text-2: #4A554C;
+  --tc-text-3: #7A857C;
+  --tc-line: #E6EAE4;
+  --tc-line-2: #F0F3ED;
+  --tc-surface: #FFFFFF;
+  --tc-canvas: #F7F8F5;
+
+  /* Status */
+  --tc-live: #22A957;
+  --tc-claimed: #E8A23B;
+  --tc-rescued: #9BA39C;
+  --tc-danger: #D94F4F;
+  --tc-flytip: #C94A3A;
+
+  /* Radii + shadows */
+  --tc-r-sm: 8px;
+  --tc-r-md: 12px;
+  --tc-r-lg: 18px;
+  --tc-r-xl: 24px;
+  --tc-r-pill: 999px;
+  --tc-shadow-sm: 0 1px 2px rgba(10,13,10,.04), 0 1px 3px rgba(10,13,10,.06);
+  --tc-shadow-md: 0 4px 12px rgba(10,13,10,.06), 0 2px 4px rgba(10,13,10,.04);
+  --tc-shadow-lg: 0 20px 40px rgba(10,13,10,.08), 0 8px 16px rgba(10,13,10,.06);
+
+  /* Type */
+  --tc-font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --tc-font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: var(--tc-font); color: var(--tc-text); background: var(--tc-canvas); -webkit-font-smoothing: antialiased; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; color: inherit; }
+
+/* Shared primitives */
+.tc-pill-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--tc-mint); color: var(--tc-ink);
+  padding: 10px 18px; border-radius: var(--tc-r-pill);
+  font-weight: 600; font-size: 14px; transition: background .15s;
+}
+.tc-pill-btn:hover { background: var(--tc-mint-deep); }
+.tc-pill-btn.ghost { background: transparent; border: 1px solid var(--tc-line); color: var(--tc-text); }
+.tc-pill-btn.ghost:hover { background: var(--tc-mint-wash); border-color: var(--tc-mint); }
+.tc-pill-btn.dark { background: var(--tc-ink); color: white; }
+.tc-pill-btn.dark:hover { background: var(--tc-ink-2); }
+.tc-pill-btn.block { width: 100%; justify-content: center; padding: 14px 20px; font-size: 15px; }
+.tc-pill-btn.lg { padding: 14px 22px; font-size: 15px; }
+
+.tc-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: var(--tc-r-pill);
+  font-size: 12px; font-weight: 500;
+  background: var(--tc-mint-bg); color: var(--tc-mint-ink);
+}
+.tc-chip.flytip { background: #FFECE8; color: var(--tc-flytip); }
+.tc-chip.neutral { background: var(--tc-line-2); color: var(--tc-text-2); }
+.tc-chip.live { background: #E6F7EC; color: var(--tc-live); }
+.tc-chip.claimed { background: #FFF4E0; color: var(--tc-claimed); }
+
+.tc-card {
+  background: var(--tc-surface); border: 1px solid var(--tc-line);
+  border-radius: var(--tc-r-lg); padding: 20px;
+}
+
+.tc-stat-disc {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--tc-mint-bg); display: grid; place-items: center;
+  color: var(--tc-mint-ink);
+}
