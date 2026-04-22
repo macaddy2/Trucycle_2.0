@@ -1,0 +1,107 @@
+Category,Subcategory,Item,Typical weight (kg),Embodied CO2e per kg,Landfill CO2e per kg,Embodied CO2e saved (kg),Landfill CO2e avoided (kg),Collection emissions (kg),Net CO2e saved at 0.6 substitution (kg),Carbon points awarded,Source notes
+Furniture,Soft furniture,Sofa — 3-seater,55,5.0,0.497,275.0,27.3,1.4,190.9,191,"Upholstered, mixed materials. FIRA avg for new manufacture"
+Furniture,Soft furniture,Sofa — 2-seater,40,5.0,0.497,200.0,19.9,1.4,138.5,138,"Upholstered, mixed materials"
+Furniture,Soft furniture,Armchair,25,5.0,0.497,125.0,12.4,1.4,86.0,86,Upholstered single seat
+Furniture,Soft furniture,Sofa bed,60,5.2,0.497,312.0,29.8,1.4,215.6,216,Includes mechanism — higher embodied
+Furniture,Soft furniture,Recliner,45,5.5,0.497,247.5,22.4,1.4,169.5,170,Mechanism + upholstery
+Furniture,Soft furniture,Footstool / ottoman,8,4.5,0.497,36.0,4.0,1.4,24.2,24,Smaller upholstered item
+Furniture,Beds & mattresses,Double mattress,30,6.0,0.497,180.0,14.9,1.4,121.5,122,WRAP mattress research avg
+Furniture,Beds & mattresses,Single mattress,18,6.0,0.497,108.0,8.9,1.4,72.3,72,WRAP mattress research avg
+Furniture,Beds & mattresses,King mattress,40,6.0,0.497,240.0,19.9,1.4,162.5,162,WRAP mattress research avg
+Furniture,Beds & mattresses,Bed frame — wooden double,35,1.0,0.925,35.0,32.4,1.4,52.0,52,"Solid wood, DEFRA wood landfill factor"
+Furniture,Beds & mattresses,Bed frame — metal double,30,4.0,0.1,120.0,3.0,1.4,73.6,74,"Metal — mostly recycled, low landfill"
+Furniture,Beds & mattresses,Divan base,30,3.5,0.497,105.0,14.9,1.4,76.5,76,Mixed wood/fabric construction
+Furniture,Beds & mattresses,Cot / child bed,15,1.2,0.925,18.0,13.9,1.4,23.3,23,Wooden frame
+Furniture,Storage,Wardrobe — 2-door,50,1.0,0.925,50.0,46.2,1.4,74.8,75,Solid or engineered wood
+Furniture,Storage,Wardrobe — 3-door,80,1.0,0.925,80.0,74.0,1.4,120.6,121,Solid or engineered wood
+Furniture,Storage,Chest of drawers,30,1.0,0.925,30.0,27.8,1.4,44.4,44,Typical 4-drawer
+Furniture,Storage,Bedside table,12,1.0,0.925,12.0,11.1,1.4,16.9,17,Small wooden unit
+Furniture,Storage,Bookshelf — tall,25,1.0,0.925,25.0,23.1,1.4,36.7,37,5-6 shelf
+Furniture,Storage,Bookshelf — small,12,1.0,0.925,12.0,11.1,1.4,16.9,17,3-shelf
+Furniture,Storage,Shoe rack / cabinet,15,1.0,0.925,15.0,13.9,1.4,21.5,22,Wooden or mixed
+Furniture,Storage,Sideboard,40,1.0,0.925,40.0,37.0,1.4,59.6,60,Living/dining storage
+Furniture,Storage,TV stand / unit,25,1.0,0.925,25.0,23.1,1.4,36.7,37,Engineered wood typical
+Furniture,Storage,Filing cabinet — metal,30,4.0,0.1,120.0,3.0,1.4,73.6,74,"Steel, DEFRA material factor"
+Furniture,Storage,Filing cabinet — wooden,25,1.0,0.925,25.0,23.1,1.4,36.7,37,Wooden construction
+Furniture,Tables & desks,Dining table — 4-seater,35,1.0,0.925,35.0,32.4,1.4,52.0,52,Solid wood typical
+Furniture,Tables & desks,Dining table — 6-seater,55,1.0,0.925,55.0,50.9,1.4,82.5,82,Larger dining
+Furniture,Tables & desks,Coffee table,15,1.0,0.925,15.0,13.9,1.4,21.5,22,Wooden or mixed
+Furniture,Tables & desks,Side table,8,1.0,0.925,8.0,7.4,1.4,10.8,11,Small occasional table
+Furniture,Tables & desks,Desk — home office,25,1.0,0.925,25.0,23.1,1.4,36.7,37,Wooden or engineered
+Furniture,Tables & desks,Desk — large / executive,45,1.2,0.925,54.0,41.6,1.4,72.6,73,"Solid wood, heavier construction"
+Furniture,Tables & desks,Console table,20,1.0,0.925,20.0,18.5,1.4,29.1,29,Narrow hallway table
+Furniture,Seating,Dining chair — wooden,6,1.0,0.925,6.0,5.6,1.4,7.8,8,"Solid wood, per chair"
+Furniture,Seating,Dining chair — upholstered,8,2.5,0.6,20.0,4.8,1.4,15.4,15,Mixed materials
+Furniture,Seating,Office chair,15,4.0,0.2,60.0,3.0,1.4,37.6,38,Mixed metal/plastic/fabric
+Furniture,Seating,Bar stool,8,1.5,0.4,12.0,3.2,1.4,9.0,9,Mixed wood/metal
+Furniture,Seating,Bench — wooden,20,1.0,0.925,20.0,18.5,1.4,29.1,29,Solid wood seating
+WEEE,Large appliances,Fridge freezer,60,4.0,0.05,240.0,3.0,1.4,145.6,146,"CarbonWARM2 WEEE factor, mostly recycled"
+WEEE,Large appliances,Fridge — standalone,45,4.0,0.05,180.0,2.2,1.4,108.8,109,CarbonWARM2 WEEE factor
+WEEE,Large appliances,Chest freezer,55,4.0,0.05,220.0,2.8,1.4,133.3,133,CarbonWARM2 WEEE factor
+WEEE,Large appliances,Washing machine,70,4.0,0.05,280.0,3.5,1.4,170.1,170,CarbonWARM2 WEEE factor
+WEEE,Large appliances,Tumble dryer,45,4.0,0.05,180.0,2.2,1.4,108.8,109,CarbonWARM2 WEEE factor
+WEEE,Large appliances,Washer-dryer combo,75,4.5,0.05,337.5,3.8,1.4,204.8,205,"More complex, higher embodied"
+WEEE,Large appliances,Dishwasher,50,4.0,0.05,200.0,2.5,1.4,121.1,121,CarbonWARM2 WEEE factor
+WEEE,Large appliances,Oven — electric,40,4.0,0.05,160.0,2.0,1.4,96.6,97,Built-in or standalone
+WEEE,Large appliances,Oven — gas,45,4.2,0.05,189.0,2.2,1.4,114.2,114,Higher embodied due to gas components
+WEEE,Large appliances,Range cooker,80,4.5,0.05,360.0,4.0,1.4,218.6,219,Large multi-oven unit
+WEEE,Large appliances,Hob — electric,12,5.0,0.05,60.0,0.6,1.4,35.2,35,Ceramic/induction
+WEEE,Large appliances,Extractor hood,8,5.0,0.05,40.0,0.4,1.4,23.0,23,Kitchen ventilation
+WEEE,Small appliances,Microwave,12,7.0,0.1,84.0,1.2,1.4,50.2,50,CarbonWARM2 small WEEE avg
+WEEE,Small appliances,Kettle,1,8.0,0.1,8.0,0.1,1.4,3.5,4,Small electrical
+WEEE,Small appliances,Toaster,2,8.0,0.1,16.0,0.2,1.4,8.4,8,Small electrical
+WEEE,Small appliances,Coffee machine,4,7.5,0.1,30.0,0.4,1.4,17.0,17,Bean-to-cup or pod
+WEEE,Small appliances,Air fryer,6,7.0,0.1,42.0,0.6,1.4,24.4,24,Counter-top appliance
+WEEE,Small appliances,Slow cooker,4,6.0,0.1,24.0,0.4,1.4,13.4,13,Counter-top appliance
+WEEE,Small appliances,Food processor / blender,4,7.0,0.1,28.0,0.4,1.4,15.8,16,Small kitchen electrical
+WEEE,Small appliances,Stand mixer,10,6.5,0.1,65.0,1.0,1.4,38.6,39,KitchenAid-type unit
+WEEE,Small appliances,Vacuum cleaner — upright,8,6.0,0.2,48.0,1.6,1.4,29.0,29,Mixed plastic/motor
+WEEE,Small appliances,Vacuum cleaner — cordless,3,8.0,0.2,24.0,0.6,1.4,13.6,14,"Battery-powered, higher embodied"
+WEEE,Small appliances,Iron,1.5,7.0,0.1,10.5,0.2,1.4,5.1,5,Small electrical
+WEEE,Small appliances,Hair dryer,1,8.0,0.1,8.0,0.1,1.4,3.5,4,Small electrical
+WEEE,Small appliances,Heater — portable electric,5,5.0,0.1,25.0,0.5,1.4,14.1,14,Fan or oil-filled
+WEEE,Small appliances,Fan — pedestal / tower,4,5.0,0.1,20.0,0.4,1.4,11.0,11,Domestic fan
+WEEE,Small appliances,Dehumidifier,10,6.0,0.1,60.0,1.0,1.4,35.6,36,Portable unit
+WEEE,IT equipment,Desktop computer,10,15.0,0.1,150.0,1.0,1.4,89.6,90,"CarbonWARM2 IT factor, high embodied"
+WEEE,IT equipment,Laptop,2,20.0,0.1,40.0,0.2,1.4,22.8,23,High embodied per kg
+WEEE,IT equipment,Monitor — LCD/LED,6,10.0,0.1,60.0,0.6,1.4,35.2,35,CarbonWARM2 display factor
+WEEE,IT equipment,Monitor — large / 4K,10,10.0,0.1,100.0,1.0,1.4,59.6,60,CarbonWARM2 display factor
+WEEE,IT equipment,Printer — inkjet,5,8.0,0.1,40.0,0.5,1.4,23.1,23,Small printer
+WEEE,IT equipment,Printer — laser,12,8.0,0.1,96.0,1.2,1.4,57.4,57,Larger printer
+WEEE,IT equipment,Printer — multifunction,15,8.0,0.1,120.0,1.5,1.4,72.1,72,All-in-one
+WEEE,IT equipment,Tablet,0.6,25.0,0.1,15.0,0.1,1.4,7.7,8,Very high embodied per kg
+WEEE,IT equipment,Router / modem,0.5,10.0,0.1,5.0,0.1,1.4,1.6,2,Small networking
+WEEE,IT equipment,External hard drive,0.3,12.0,0.1,3.6,0.0,1.4,0.8,1,Storage device
+WEEE,IT equipment,Keyboard,0.8,5.0,0.1,4.0,0.1,1.4,1.1,1,Peripheral
+WEEE,IT equipment,Mouse,0.2,5.0,0.1,1.0,0.0,1.4,-0.8,-1,Peripheral
+WEEE,Consumer electronics,TV — 32-inch,8,10.0,0.1,80.0,0.8,1.4,47.4,47,CarbonWARM2 display factor
+WEEE,Consumer electronics,TV — 43-inch,10,10.0,0.1,100.0,1.0,1.4,59.6,60,CarbonWARM2 display factor
+WEEE,Consumer electronics,TV — 55-inch,15,10.0,0.1,150.0,1.5,1.4,90.1,90,CarbonWARM2 display factor
+WEEE,Consumer electronics,TV — 65-inch+,22,10.0,0.1,220.0,2.2,1.4,132.8,133,Large display
+WEEE,Consumer electronics,Soundbar,3,7.0,0.1,21.0,0.3,1.4,11.5,12,Audio unit
+WEEE,Consumer electronics,Hi-fi / stereo system,8,6.5,0.1,52.0,0.8,1.4,30.6,31,Multi-component audio
+WEEE,Consumer electronics,Bluetooth speaker,1,8.0,0.1,8.0,0.1,1.4,3.5,4,Small electronic
+WEEE,Consumer electronics,Games console,3,9.0,0.1,27.0,0.3,1.4,15.1,15,PlayStation/Xbox/similar
+WEEE,Consumer electronics,DVD / Blu-ray player,2,6.0,0.1,12.0,0.2,1.4,6.0,6,Disc player
+WEEE,Consumer electronics,Projector,3,8.0,0.1,24.0,0.3,1.4,13.3,13,Home cinema projector
+WEEE,Consumer electronics,Camera — digital,0.5,15.0,0.1,7.5,0.1,1.4,3.1,3,Standalone camera
+WEEE,Lighting,Floor lamp,4,3.0,0.4,12.0,1.6,1.4,7.4,7,Mixed materials
+WEEE,Lighting,Table lamp,2,3.0,0.4,6.0,0.8,1.4,3.0,3,Small desk/bedside
+WEEE,Lighting,Ceiling light / chandelier,5,3.5,0.4,17.5,2.0,1.4,11.1,11,Pendant or chandelier
+WEEE,Lighting,LED strip / smart lighting,1,5.0,0.2,5.0,0.2,1.4,1.8,2,Electronic components
+WEEE,Power tools,Power drill,2,8.0,0.1,16.0,0.2,1.4,8.4,8,Cordless or corded
+WEEE,Power tools,Circular saw,4,7.5,0.1,30.0,0.4,1.4,17.0,17,Power tool
+WEEE,Power tools,Lawn mower — electric,15,5.0,0.1,75.0,1.5,1.4,45.1,45,Mains or battery
+WEEE,Power tools,Hedge trimmer,4,6.5,0.1,26.0,0.4,1.4,14.6,15,Power garden tool
+WEEE,Power tools,Pressure washer,12,5.5,0.1,66.0,1.2,1.4,39.4,39,Domestic unit
+Bulky,Other,Carpet / rug — large,15,3.5,0.497,52.5,7.5,1.4,37.6,38,WRAP textile factor for floor coverings
+Bulky,Other,Exercise bike,30,5.0,0.2,150.0,6.0,1.4,94.6,95,Home gym equipment
+Bulky,Other,Treadmill,60,4.5,0.2,270.0,12.0,1.4,172.6,173,Motorised — part WEEE
+Bulky,Other,Weights bench,25,4.0,0.2,100.0,5.0,1.4,63.6,64,Mixed metal/upholstery
+Bulky,Other,Bicycle,12,4.5,0.3,54.0,3.6,1.4,34.6,35,Adult bike
+Bulky,Other,Pram / pushchair,10,5.0,0.3,50.0,3.0,1.4,31.6,32,Child transport
+Bulky,Other,High chair,6,3.5,0.4,21.0,2.4,1.4,13.6,14,Child seating
+Bulky,Other,Garden furniture — table,20,2.0,0.925,40.0,18.5,1.4,41.1,41,Wooden/metal outdoor
+Bulky,Other,Garden furniture — chair,5,2.0,0.925,10.0,4.6,1.4,9.2,9,Wooden/metal outdoor
+Bulky,Other,BBQ — gas,25,4.5,0.05,112.5,1.2,1.4,67.3,67,"Metal-heavy, mostly recyclable"
+Bulky,Other,BBQ — charcoal,12,4.0,0.05,48.0,0.6,1.4,28.0,28,Smaller metal unit
