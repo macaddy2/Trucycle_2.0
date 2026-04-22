@@ -441,9 +441,11 @@ function animateCounters(containerSelector) {
     if (userRescues) animateNumber(userRescues, DEMO_USER.rescuesCompleted, 0);
 
     // Equivalencies
+    const eqValue = document.getElementById('eq-value');
     const eqMiles = document.getElementById('eq-miles');
     const eqTrains = document.getElementById('eq-trains');
     const eqTrees = document.getElementById('eq-trees');
+    if (eqValue) animateCurrency(eqValue, parseFloat(co2ToValue(DEMO_USER.totalCO2e)));
     if (eqMiles) animateNumber(eqMiles, co2ToMiles(DEMO_USER.totalCO2e), 0);
     if (eqTrains) animateNumber(eqTrains, parseFloat(co2ToTrainJourneys(DEMO_USER.totalCO2e)), 1);
     if (eqTrees) animateNumber(eqTrees, parseFloat(co2ToTrees(DEMO_USER.totalCO2e)), 1);
@@ -632,4 +634,26 @@ function animateNumber(element, target, decimals = 0, useFormat = false) {
 function navigateToSection(sectionId) {
   const tab = document.querySelector(`.nav__tab[data-section="${sectionId}"]`);
   if (tab) tab.click();
+}
+
+function animateCurrency(element, target) {
+  const duration = 1500;
+  const startTime = performance.now();
+  const start = 0;
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = start + (target - start) * eased;
+
+    // Use toLocaleString to get nice commas (e.g. 7,129.50)
+    element.textContent = '£' + current.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
 }

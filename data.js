@@ -165,6 +165,12 @@ function co2ToTrees(co2e) {
   return (co2e / 22).toFixed(1);
 }
 
+const MARKET_RATE_PER_KG = 0.05; // £50 per tonne CO2e -> £0.05 per kg
+
+function co2ToValue(co2e) {
+  return (co2e * MARKET_RATE_PER_KG).toFixed(2);
+}
+
 // Get unique categories from carbon DB
 function getCategories() {
   const cats = {};

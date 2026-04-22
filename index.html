@@ -34,7 +34,6 @@
         <button class="nav__tab" data-section="map" id="tab-map">Live Map</button>
         <button class="nav__tab" data-section="impact" id="tab-impact">My Impact</button>
         <button class="nav__tab" data-section="london" id="tab-london">London</button>
-        <button class="nav__tab" data-section="calculator" id="tab-calculator">Calculator</button>
         <button class="nav__tab" data-section="leaderboard" id="tab-leaderboard">Leaderboard</button>
       </div>
 
@@ -265,8 +264,13 @@
             </div>
           </div>
 
-          <!-- CO2 Equivalencies -->
-          <div class="grid-3 mt-5">
+          <!-- CO2 Equivalencies & Value -->
+          <div class="grid-4 mt-5">
+            <div class="equiv-card">
+              <div class="equiv-card__icon">💰</div>
+              <div class="equiv-card__value" id="eq-value">£0.00</div>
+              <div class="equiv-card__label">est. market value</div>
+            </div>
             <div class="equiv-card">
               <div class="equiv-card__icon">🚗</div>
               <div class="equiv-card__value" id="eq-miles">0</div>
@@ -336,7 +340,7 @@
             <div class="london-stat">
               <div class="london-stat__value" id="london-co2">0</div>
               <div class="london-stat__label">kg CO₂e Saved</div>
-              <div class="london-stat__sub">≈ 570K miles not driven</div>
+              <div class="london-stat__sub">≈ £7,129 community value created</div>
             </div>
             <div class="london-stat">
               <div class="london-stat__value" id="london-users">0</div>
@@ -364,92 +368,6 @@
       </div>
     </section>
 
-    <!-- ========== CARBON CALCULATOR ========== -->
-    <section class="section" id="calculator">
-      <div class="calculator">
-        <div class="container">
-          <div class="section-header">
-            <span class="eyebrow">Transparent Methodology</span>
-            <h2>Carbon Calculator</h2>
-            <p>See exactly how much CO₂e is saved when an item is rescued instead of going to landfill. Every number is DEFRA-backed.</p>
-          </div>
-
-          <div style="max-width: 600px; margin: 0 auto;">
-            <div class="calc-panel">
-              <div class="mb-4">
-                <label class="location-mock__label" for="calc-category">Category</label>
-                <select class="calc-select" id="calc-category">
-                  <option value="">Choose category...</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="location-mock__label" for="calc-item">Item</label>
-                <select class="calc-select" id="calc-item">
-                  <option value="">Choose item...</option>
-                </select>
-              </div>
-
-              <!-- Result -->
-              <div class="calc-result" id="calc-result" style="display: none;">
-                <div class="calc-result__hero">
-                  <div class="calc-result__co2" id="calc-co2">0</div>
-                  <div class="calc-result__unit">kg CO₂e saved</div>
-                  <div class="calc-result__title">Net carbon saving at 60% substitution rate</div>
-                </div>
-
-                <!-- Breakdown -->
-                <div class="calc-breakdown">
-                  <div class="calc-breakdown__item">
-                    <div class="calc-breakdown__label">Weight</div>
-                    <div class="calc-breakdown__value" id="calc-weight">—</div>
-                  </div>
-                  <div class="calc-breakdown__item">
-                    <div class="calc-breakdown__label">Embodied CO₂</div>
-                    <div class="calc-breakdown__value" id="calc-embodied">—</div>
-                  </div>
-                  <div class="calc-breakdown__item">
-                    <div class="calc-breakdown__label">Landfill diversion</div>
-                    <div class="calc-breakdown__value" id="calc-landfill">—</div>
-                  </div>
-                  <div class="calc-breakdown__item">
-                    <div class="calc-breakdown__label">Carbon Points</div>
-                    <div class="calc-breakdown__value" style="color: var(--tc-forest);" id="calc-points">—</div>
-                  </div>
-                </div>
-
-                <!-- Equivalencies -->
-                <div style="margin-top: var(--s5); padding-top: var(--s5); border-top: 1px solid var(--tc-line-soft);">
-                  <div class="location-mock__label" style="margin-bottom: var(--s3);">That's equivalent to...</div>
-                  <div class="grid-3">
-                    <div class="equiv-card">
-                      <div class="equiv-card__icon">🚗</div>
-                      <div class="equiv-card__value" id="calc-miles">0</div>
-                      <div class="equiv-card__label">miles not driven</div>
-                    </div>
-                    <div class="equiv-card">
-                      <div class="equiv-card__icon">🚆</div>
-                      <div class="equiv-card__value" id="calc-trains">0</div>
-                      <div class="equiv-card__label">train returns</div>
-                    </div>
-                    <div class="equiv-card">
-                      <div class="equiv-card__icon">🌳</div>
-                      <div class="equiv-card__value" id="calc-trees">0</div>
-                      <div class="equiv-card__label">trees (1 year)</div>
-                    </div>
-                  </div>
-                </div>
-
-                <p style="margin-top: var(--s5); font-size: 12px; color: var(--tc-ink-soft); text-align: center;">
-                  Methodology: DEFRA 2025 emission factors · PAS 2050 boundary · 0.6 substitution rate · 1.4 kg collection offset.
-                  <a href="#" style="color: var(--tc-mint-deep);" onclick="navigateToSection('hero'); return false;">Read full methodology →</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ========== LEADERBOARD ========== -->
     <section class="section" id="leaderboard">
