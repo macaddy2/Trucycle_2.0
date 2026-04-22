@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TruCycle 2.0 — Street Spot & Rescue</title>
+  <meta name="description" content="Spot abandoned items on London streets, rescue them for free, and earn carbon points. TruCycle 2.0 — community-powered reuse." />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Leaflet.js for maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♻️</text></svg>" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="nav" id="main-nav">
+    <div class="nav__inner">
+      <div class="nav__brand">
+        <div class="nav__logo">♻️</div>
+        <div class="nav__title">TruCycle <span>2.0</span></div>
+      </div>
+
+      <div class="nav__tabs" id="nav-tabs">
+        <button class="nav__tab active" data-section="hero" id="tab-hero">Home</button>
+        <button class="nav__tab" data-section="spot" id="tab-spot">Spot Flow</button>
+        <button class="nav__tab" data-section="map" id="tab-map">Live Map</button>
+        <button class="nav__tab" data-section="impact" id="tab-impact">My Impact</button>
+        <button class="nav__tab" data-section="london" id="tab-london">London</button>
+        <button class="nav__tab" data-section="calculator" id="tab-calculator">Calculator</button>
+        <button class="nav__tab" data-section="leaderboard" id="tab-leaderboard">Leaderboard</button>
+      </div>
+
+      <button class="nav__mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main class="main">
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="section active" id="hero">
+      <div class="hero">
+        <div class="container hero__content">
+          <div class="hero__eyebrow eyebrow">
+            <span class="dot"></span>
+            Coming Soon to TruCycle
+          </div>
+
+          <h1 class="text-display-xl hero__headline">
+            Spot it.<br/>
+            Rescue it.<br/>
+            <span class="highlight">Save the planet.</span>
+          </h1>
+
+          <p class="hero__subtitle">
+            See something reusable on a London street? Photograph it, post it, and let your community rescue it — earning real carbon points for every item saved from landfill.
+          </p>
+
+          <div class="hero__ctas">
+            <button class="hero__cta" onclick="navigateToSection('spot')" id="cta-spot">
+              <div class="hero__cta-icon spot">📸</div>
+              <span class="hero__cta-label">Spot something</span>
+            </button>
+            <button class="hero__cta" onclick="navigateToSection('map')" id="cta-rescue">
+              <div class="hero__cta-icon rescue">📍</div>
+              <span class="hero__cta-label">Rescue something</span>
+            </button>
+            <button class="hero__cta" onclick="window.open('https://trucycle.co.uk', '_blank')" id="cta-list">
+              <div class="hero__cta-icon list">➕</div>
+              <span class="hero__cta-label">List something</span>
+            </button>
+          </div>
+
+          <!-- Live rescue ticker -->
+          <div class="ticker">
+            <div class="ticker__track" id="ticker-track">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SPOT FLOW ========== -->
+    <section class="section" id="spot">
+      <div class="spot-flow">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Interactive Demo</span>
+            <h2>Street Spot Flow</h2>
+            <p>See how easy it is to spot a reusable item on the street and post it to TruCycle — in under 60 seconds.</p>
+          </div>
+
+          <div class="spot-flow__container">
+            <!-- Progress -->
+            <div class="spot-flow__progress">
+              <div class="spot-flow__step-dot active" id="dot-1"></div>
+              <div class="spot-flow__step-line" id="line-1"></div>
+              <div class="spot-flow__step-dot" id="dot-2"></div>
+              <div class="spot-flow__step-line" id="line-2"></div>
+              <div class="spot-flow__step-dot" id="dot-3"></div>
+            </div>
+
+            <!-- Step 1: Camera -->
+            <div class="spot-flow__screen active" id="spot-step-1">
+              <div class="camera-mock">
+                <div class="camera-mock__viewfinder"></div>
+                <div class="camera-mock__corners"></div>
+                <div class="camera-mock__item-preview">🛋️</div>
+                <button class="camera-mock__shutter" id="shutter-btn" aria-label="Take photo"></button>
+                <p class="camera-mock__hint">Tap the shutter to capture</p>
+              </div>
+            </div>
+
+            <!-- Step 2: Location & Category -->
+            <div class="spot-flow__screen" id="spot-step-2">
+              <div class="location-mock">
+                <div class="location-mock__map">
+                  <div class="location-mock__pin">📍</div>
+                </div>
+                <div class="location-mock__details">
+                  <div class="location-mock__field">
+                    <div class="location-mock__label">Detected Location</div>
+                    <div class="location-mock__value">Stratford High Street, E15 1XA</div>
+                  </div>
+                  <div class="location-mock__field">
+                    <div class="location-mock__label">What did you spot?</div>
+                    <div class="category-grid">
+                      <div class="category-chip selected" data-category="Furniture" data-item="Sofa — 3-seater">🛋️ Sofa</div>
+                      <div class="category-chip" data-category="Furniture" data-item="Armchair">🪑 Chair</div>
+                      <div class="category-chip" data-category="Furniture" data-item="Bookshelf — tall">📚 Shelf</div>
+                      <div class="category-chip" data-category="Furniture" data-item="Desk — home office">🖥️ Desk</div>
+                      <div class="category-chip" data-category="WEEE" data-item="Fridge freezer">🧊 Fridge</div>
+                      <div class="category-chip" data-category="WEEE" data-item="TV — 55-inch">📺 TV</div>
+                      <div class="category-chip" data-category="WEEE" data-item="Washing machine">🫧 Washer</div>
+                      <div class="category-chip" data-category="Bulky" data-item="Bicycle">🚲 Bike</div>
+                      <div class="category-chip" data-category="Furniture" data-item="Double mattress">🛏️ Mattress</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-full mt-5" onclick="goToSpotStep(3)">
+                    Continue →
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Review & Post -->
+            <div class="spot-flow__screen" id="spot-step-3">
+              <div class="review-card">
+                <div class="review-card__image" id="review-icon">🛋️</div>
+                <div class="review-card__body">
+                  <div class="review-card__row">
+                    <span class="review-card__row-label">Item</span>
+                    <span class="review-card__row-value" id="review-item">Sofa — 3-seater</span>
+                  </div>
+                  <div class="review-card__row">
+                    <span class="review-card__row-label">Category</span>
+                    <span class="review-card__row-value" id="review-category">Furniture › Soft furniture</span>
+                  </div>
+                  <div class="review-card__row">
+                    <span class="review-card__row-label">Location</span>
+                    <span class="review-card__row-value">E15 1XA</span>
+                  </div>
+                  <div class="review-card__row">
+                    <span class="review-card__row-label">Est. Weight</span>
+                    <span class="review-card__row-value" id="review-weight">55 kg</span>
+                  </div>
+                  <div class="review-card__row">
+                    <span class="review-card__row-label">CO₂e Saved</span>
+                    <span class="review-card__row-value" id="review-co2" style="color: var(--tc-forest);">190.9 kg CO₂e</span>
+                  </div>
+
+                  <div class="review-card__points">
+                    <div class="review-card__points-value" id="review-points">+191</div>
+                    <div class="review-card__points-label">carbon points you'll earn</div>
+                  </div>
+
+                  <div class="flex gap-3 mt-5">
+                    <button class="btn btn-secondary" onclick="goToSpotStep(2)" id="spot-back">← Back</button>
+                    <button class="btn btn-primary" style="flex:1;" onclick="postSpot()" id="spot-post">Post Spot 🚀</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LIVE MAP ========== -->
+    <section class="section" id="map">
+      <div class="map-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Explore London</span>
+            <h2>Live Spot Map</h2>
+            <p>Every pin is a reusable item waiting to be rescued. Click a pin to see details and claim it.</p>
+          </div>
+
+          <div class="grid-2" style="grid-template-columns: 1fr 340px;">
+            <div class="map-wrapper">
+              <div id="spot-map"></div>
+            </div>
+            <div class="map-sidebar">
+              <div class="map-sidebar__title">📋 Nearby Spots</div>
+              <div id="spot-list">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MY IMPACT ========== -->
+    <section class="section" id="impact">
+      <div class="dashboard">
+        <div class="container">
+          <div class="dashboard__header">
+            <div class="dashboard__user-bar">
+              <div class="dashboard__avatar">AK</div>
+              <div class="dashboard__greeting">
+                <h2>Hey, Alex 👋</h2>
+                <p>Your impact is growing — keep it up!</p>
+              </div>
+              <div class="badge silver">🥈 Silver</div>
+            </div>
+          </div>
+
+          <!-- Stat cards -->
+          <div class="grid-4">
+            <div class="stat-card">
+              <div class="stat-card__icon" style="background: var(--tc-mint-soft);">🌱</div>
+              <div class="stat-card__value" id="user-co2">0</div>
+              <div class="stat-card__label">kg CO₂e saved</div>
+              <div class="stat-card__change up">▲ 18% this month</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__icon" style="background: #FFF3E0;">✨</div>
+              <div class="stat-card__value" id="user-points">0</div>
+              <div class="stat-card__label">Carbon Points</div>
+              <div class="stat-card__change up">▲ 153 this week</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__icon" style="background: #E3F2FD;">📸</div>
+              <div class="stat-card__value" id="user-spots">0</div>
+              <div class="stat-card__label">Items Spotted</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__icon" style="background: #F3E5F5;">🏠</div>
+              <div class="stat-card__value" id="user-rescues">0</div>
+              <div class="stat-card__label">Rescues Completed</div>
+            </div>
+          </div>
+
+          <!-- CO2 Equivalencies -->
+          <div class="grid-3 mt-5">
+            <div class="equiv-card">
+              <div class="equiv-card__icon">🚗</div>
+              <div class="equiv-card__value" id="eq-miles">0</div>
+              <div class="equiv-card__label">miles not driven</div>
+            </div>
+            <div class="equiv-card">
+              <div class="equiv-card__icon">🚆</div>
+              <div class="equiv-card__value" id="eq-trains">0</div>
+              <div class="equiv-card__label">London–Edinburgh returns</div>
+            </div>
+            <div class="equiv-card">
+              <div class="equiv-card__icon">🌳</div>
+              <div class="equiv-card__value" id="eq-trees">0</div>
+              <div class="equiv-card__label">trees' yearly absorption</div>
+            </div>
+          </div>
+
+          <!-- Streak -->
+          <div class="streak-bar">
+            <div class="streak-bar__header">
+              <div class="streak-bar__title">🔥 Weekly Streak</div>
+              <span class="badge gold" style="font-size: 11px;">4 weeks strong</span>
+            </div>
+            <div class="streak-bar__weeks" id="streak-weeks">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Impact chart -->
+          <div class="chart-container">
+            <div class="chart-container__header">
+              <div class="chart-container__title">Weekly CO₂e Saved</div>
+              <span style="font-size: 13px; color: var(--tc-ink-soft);">Last 8 weeks</span>
+            </div>
+            <div class="chart-bars" id="impact-chart">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LONDON DASHBOARD ========== -->
+    <section class="section" id="london">
+      <div class="london-dash">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: var(--s7); padding-top: var(--s7);">
+            <span class="eyebrow" style="color: var(--tc-mint);">Public Impact Dashboard</span>
+            <h2 class="london-dash__headline" style="margin-top: var(--s3);">London's Rescue Impact</h2>
+            <p style="color: rgba(255,255,255,0.5); max-width: 500px; margin: 0 auto;">
+              Real-time city-wide impact from TruCycle's community of spotters and rescuers.
+            </p>
+          </div>
+
+          <!-- Big stats -->
+          <div class="grid-4">
+            <div class="london-stat">
+              <div class="london-stat__value" id="london-spots">0</div>
+              <div class="london-stat__label">Items Spotted</div>
+              <div class="london-stat__sub">↗ 142 this week</div>
+            </div>
+            <div class="london-stat">
+              <div class="london-stat__value" id="london-rescues">0</div>
+              <div class="london-stat__label">Rescues Completed</div>
+              <div class="london-stat__sub">67% rescue rate</div>
+            </div>
+            <div class="london-stat">
+              <div class="london-stat__value" id="london-co2">0</div>
+              <div class="london-stat__label">kg CO₂e Saved</div>
+              <div class="london-stat__sub">≈ 570K miles not driven</div>
+            </div>
+            <div class="london-stat">
+              <div class="london-stat__value" id="london-users">0</div>
+              <div class="london-stat__label">Active Users</div>
+              <div class="london-stat__sub">189 weekly rescuers</div>
+            </div>
+          </div>
+
+          <!-- Fly-tipping diversion callout -->
+          <div style="margin-top: var(--s6); background: rgba(212, 168, 75, 0.1); border: 1px solid rgba(212, 168, 75, 0.25); border-radius: var(--r-xl); padding: var(--s6); text-align: center;">
+            <div style="font-size: 40px; margin-bottom: var(--s3);">🚛</div>
+            <div style="font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--tc-amber);">412</div>
+            <div style="color: rgba(255,255,255,0.6); margin-top: var(--s1);">fly-tipped items diverted from council cleanup</div>
+            <div style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: var(--s2);">Saving London councils an estimated £8,240 in cleanup costs</div>
+          </div>
+
+          <!-- Borough rankings -->
+          <div style="margin-top: var(--s7);">
+            <h3 style="font-family: var(--font-display); font-size: var(--text-h2); margin-bottom: var(--s5);">Top Boroughs by Rescue Volume</h3>
+            <div id="borough-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CARBON CALCULATOR ========== -->
+    <section class="section" id="calculator">
+      <div class="calculator">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Transparent Methodology</span>
+            <h2>Carbon Calculator</h2>
+            <p>See exactly how much CO₂e is saved when an item is rescued instead of going to landfill. Every number is DEFRA-backed.</p>
+          </div>
+
+          <div style="max-width: 600px; margin: 0 auto;">
+            <div class="calc-panel">
+              <div class="mb-4">
+                <label class="location-mock__label" for="calc-category">Category</label>
+                <select class="calc-select" id="calc-category">
+                  <option value="">Choose category...</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="location-mock__label" for="calc-item">Item</label>
+                <select class="calc-select" id="calc-item">
+                  <option value="">Choose item...</option>
+                </select>
+              </div>
+
+              <!-- Result -->
+              <div class="calc-result" id="calc-result" style="display: none;">
+                <div class="calc-result__hero">
+                  <div class="calc-result__co2" id="calc-co2">0</div>
+                  <div class="calc-result__unit">kg CO₂e saved</div>
+                  <div class="calc-result__title">Net carbon saving at 60% substitution rate</div>
+                </div>
+
+                <!-- Breakdown -->
+                <div class="calc-breakdown">
+                  <div class="calc-breakdown__item">
+                    <div class="calc-breakdown__label">Weight</div>
+                    <div class="calc-breakdown__value" id="calc-weight">—</div>
+                  </div>
+                  <div class="calc-breakdown__item">
+                    <div class="calc-breakdown__label">Embodied CO₂</div>
+                    <div class="calc-breakdown__value" id="calc-embodied">—</div>
+                  </div>
+                  <div class="calc-breakdown__item">
+                    <div class="calc-breakdown__label">Landfill diversion</div>
+                    <div class="calc-breakdown__value" id="calc-landfill">—</div>
+                  </div>
+                  <div class="calc-breakdown__item">
+                    <div class="calc-breakdown__label">Carbon Points</div>
+                    <div class="calc-breakdown__value" style="color: var(--tc-forest);" id="calc-points">—</div>
+                  </div>
+                </div>
+
+                <!-- Equivalencies -->
+                <div style="margin-top: var(--s5); padding-top: var(--s5); border-top: 1px solid var(--tc-line-soft);">
+                  <div class="location-mock__label" style="margin-bottom: var(--s3);">That's equivalent to...</div>
+                  <div class="grid-3">
+                    <div class="equiv-card">
+                      <div class="equiv-card__icon">🚗</div>
+                      <div class="equiv-card__value" id="calc-miles">0</div>
+                      <div class="equiv-card__label">miles not driven</div>
+                    </div>
+                    <div class="equiv-card">
+                      <div class="equiv-card__icon">🚆</div>
+                      <div class="equiv-card__value" id="calc-trains">0</div>
+                      <div class="equiv-card__label">train returns</div>
+                    </div>
+                    <div class="equiv-card">
+                      <div class="equiv-card__icon">🌳</div>
+                      <div class="equiv-card__value" id="calc-trees">0</div>
+                      <div class="equiv-card__label">trees (1 year)</div>
+                    </div>
+                  </div>
+                </div>
+
+                <p style="margin-top: var(--s5); font-size: 12px; color: var(--tc-ink-soft); text-align: center;">
+                  Methodology: DEFRA 2025 emission factors · PAS 2050 boundary · 0.6 substitution rate · 1.4 kg collection offset.
+                  <a href="#" style="color: var(--tc-mint-deep);" onclick="navigateToSection('hero'); return false;">Read full methodology →</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LEADERBOARD ========== -->
+    <section class="section" id="leaderboard">
+      <div class="leaderboard">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Community Rankings</span>
+            <h2>Postcode Leaderboard</h2>
+            <p>Which London postcodes are rescuing the most? See how your area stacks up.</p>
+          </div>
+
+          <div style="max-width: 800px; margin: 0 auto;">
+            <div class="leaderboard-table">
+              <div class="leaderboard-row header">
+                <div>Rank</div>
+                <div>Postcode</div>
+                <div>Rescues</div>
+                <div>CO₂e Saved</div>
+                <div>Trend</div>
+              </div>
+              <div id="leaderboard-body">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       SUCCESS MODAL
+       ============================================================ -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal">
+      <div class="modal__icon">🎉</div>
+      <h3 class="modal__title">Spot Posted!</h3>
+      <p class="modal__text" id="modal-points">+191 carbon points</p>
+      <p style="font-size: 14px; color: var(--tc-ink-soft); margin-bottom: var(--s5);">
+        Your spot is now live. Nearby users can see it on the map and rescue it. You'll earn bonus points when someone claims and collects it!
+      </p>
+      <button class="btn btn-primary btn-full" onclick="closeModal()" id="modal-close">
+        View on Map →
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__brand">♻️ TruCycle 2.0</div>
+      <div class="footer__tagline">Rescue. Rehome. Pay it forward.</div>
+      <div class="footer__links">
+        <a href="https://trucycle.co.uk" target="_blank">Main Site</a>
+        <a href="#">Carbon Methodology</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">API Docs</a>
+      </div>
+      <p>© 2026 TruCycle Ltd. Demo build — features shown are under active development.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
